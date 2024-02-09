@@ -16,12 +16,20 @@ public class TitlesPanel extends JPanel implements ActionListener {
    private int start_angle = 0;
    private int shape;
 
+   /**
+    * Створює TitlesPanel із вказаним типом фігури.
+    * @param _shape тип форми, яка буде використовуватися в анімації
+    */
    public TitlesPanel(int _shape) {
       this.shape = _shape;
       (this.animation = new Timer(50, this)).setInitialDelay(50);
       this.animation.start();
    }
 
+   /**
+    * Викликається, коли відбувається екшн.
+    * @param arg0 подія для обробки
+    */
    public void actionPerformed(ActionEvent arg0) {
       if (this.is_done) {
          this.repaint();
@@ -29,6 +37,10 @@ public class TitlesPanel extends JPanel implements ActionListener {
 
    }
 
+   /**
+    * Виконує малювання анімованих зірок.
+    * @param g графічний контекст, у якому відбувається малювання
+    */
    private void doDrawing(Graphics g) {
       this.is_done = false;
       (this.g2d = (Graphics2D)g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -59,6 +71,10 @@ public class TitlesPanel extends JPanel implements ActionListener {
       this.is_done = true;
    }
 
+   /**
+    * Фарбує компонент.
+    * @param g об’єкт Graphics для захисту
+    */
    public void paintComponent(Graphics g) {
       super.paintComponent(g);
       this.doDrawing(g);
